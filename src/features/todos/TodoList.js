@@ -22,8 +22,14 @@ export default function TodoList() {
       style={{
         backgroundColor: "#eee",
         padding: "20px",
+        flex: 1,
+        width: "100vw",
+        height: "100vh",
+        alignItems: "flex-end",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-end",
       }}
-      className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md"
     >
       <h1
         style={{
@@ -36,34 +42,49 @@ export default function TodoList() {
         Todo List
       </h1>
 
-      <div className="flex mb-4">
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          gap: "10px",
+          justifyContent: "center",
+        }}
+      >
         <input
           style={{
-            borderRadius: "4px 0 0 4px",
-            height: "40px",
+            borderRadius: "8px",
+            height: "52px",
             textIndent: "10px",
+            outlineColor: "#eee",
             width: 300,
           }}
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="flex-grow p-2 border rounded-l"
-          placeholder="Enter a new todo"
+          placeholder="Enjoy creating your todo"
         />
+
         <button
           onClick={handleAddTodo}
           style={{
             backgroundColor: "#333",
             color: "white",
-            borderRadius: "0 4px 4px 0",
-            height: "40px",
-            padding: "0 20px",
+            borderRadius: "50%",
+            height: "45px",
+            width: "45px",
+            alignItems: "center",
+            justifyContent: "center",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          Add Todo
+          <svg width="24" height="24" fill="#fff" viewBox="0 0 256 256">
+            <path d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z"></path>
+          </svg>
         </button>
       </div>
       <span> {todos.length}</span>
+      {/*  todos part */}
       <ul
         style={{
           marginTop: 20,

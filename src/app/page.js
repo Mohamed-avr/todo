@@ -3,7 +3,7 @@ import TodoList from "../features/todos/TodoList";
 
 export default function Home() {
   return (
-    <main className="container mx-auto p-4   ">
+    <main className="container   ">
       <TodoList />
     </main>
   );
