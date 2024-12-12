@@ -25,7 +25,7 @@ export default function TodoList() {
         flex: 1,
         width: "100vw",
         height: "100vh",
-        alignItems: "flex-end",
+        alignItems: "center",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
@@ -34,18 +34,92 @@ export default function TodoList() {
       <h1
         style={{
           color: "#222",
-          fontSize: "2rem",
+          fontSize: "1.3rem",
           textAlign: "left",
           marginBottom: "20px",
         }}
       >
-        Todo List
+        <span
+          style={{
+            fontSize: "24px",
+          }}
+        >
+          {" "}
+          Hello,{" "}
+        </span>
+        what your task for today ?
       </h1>
 
+      {/*  todos start */}
+      <div
+        style={{
+          width: 1800,
+          backgroundColor: "#fff",
+          height: 700,
+          borderRadius: 12,
+        }}
+      >
+        <ul
+          style={{
+            marginTop: 20,
+          }}
+        >
+          {todos.map((todo) => (
+            <li
+              key={todo.id}
+              style={{
+                backgroundColor: "#ccc",
+                color: "white",
+                padding: "10px",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  justifyItems: "center",
+                  alignItems: "center",
+                  display: "flex",
+                }}
+                className="flex items-center"
+              >
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() => dispatch(toggleTodo(todo.id))}
+                  className="mr-2"
+                  style={{
+                    height: "20px",
+                    width: "20px",
+                    cursor: "pointer",
+                    borderRadius: " 4px",
+                  }}
+                />
+                <span
+                  className={`${
+                    todo.completed ? "line-through text-gray-500 pl-4" : ""
+                  }`}
+                >
+                  {todo.text}
+                </span>
+              </div>
+              <button
+                onClick={() => dispatch(removeTodo(todo.id))}
+                className="text-red-500"
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {/*  end of todos */}
       <div
         style={{
           display: "flex",
+          marginTop: 16,
           width: "100%",
+          background: "#ccc",
           gap: "10px",
           justifyContent: "center",
         }}
@@ -83,61 +157,6 @@ export default function TodoList() {
           </svg>
         </button>
       </div>
-      <span> {todos.length}</span>
-      {/*  todos part */}
-      <ul
-        style={{
-          marginTop: 20,
-        }}
-      >
-        {todos.map((todo) => (
-          <li
-            key={todo.id}
-            style={{
-              backgroundColor: "#ccc",
-              color: "white",
-              padding: "10px",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <div
-              style={{
-                justifyItems: "center",
-                alignItems: "center",
-                display: "flex",
-              }}
-              className="flex items-center"
-            >
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => dispatch(toggleTodo(todo.id))}
-                className="mr-2"
-                style={{
-                  height: "20px",
-                  width: "20px",
-                  cursor: "pointer",
-                  borderRadius: " 4px",
-                }}
-              />
-              <span
-                className={`${
-                  todo.completed ? "line-through text-gray-500 pl-4" : ""
-                }`}
-              >
-                {todo.text}
-              </span>
-            </div>
-            <button
-              onClick={() => dispatch(removeTodo(todo.id))}
-              className="text-red-500"
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
