@@ -20,7 +20,7 @@ export default function TodoList() {
   return (
     <div
       style={{
-        backgroundColor: "#eee",
+        backgroundColor: "#fff",
         padding: "20px",
         flex: 1,
         width: "100vw",
@@ -31,131 +31,158 @@ export default function TodoList() {
         justifyContent: "flex-end",
       }}
     >
-      <h1
-        style={{
-          color: "#222",
-          fontSize: "1.3rem",
-          textAlign: "left",
-          marginBottom: "20px",
-        }}
-      >
-        <span
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          {" "}
-          Hello,{" "}
-        </span>
-        what your task for today ?
-      </h1>
-
       {/*  todos start */}
       <div
         style={{
           width: 1800,
-          backgroundColor: "#fff",
-          height: 700,
+          backgroundColor: "#f4f4f4",
+          border: "1px solid #f1f1f1",
+          height: 880,
           borderRadius: 12,
+          marginBottom: 12,
         }}
       >
+        {/*  heading  */}
+        <div
+          style={{
+            margin: 24,
+          }}
+        >
+          <h1
+            style={{
+              color: "#222",
+              fontSize: "1rem",
+              textAlign: "center",
+              color: "#666",
+            }}
+          >
+            Hi, mohamed
+          </h1>
+          <h1
+            style={{
+              color: "#222",
+              fontSize: "1.3rem",
+              textAlign: "center",
+              fontWeight: "200",
+              marginTop: "8px",
+            }}
+          >
+            What are your tasks for today?
+          </h1>
+        </div>
+        {/*  todos */}
         <ul
           style={{
             marginTop: 20,
+            minHeight: "640px",
+            padding: "20px 60px",
+            display: "flex",
+            gap: "20px",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            alignContent: "flex-start",
+            flexWrap: "wrap",
+            marginTop: 40,
           }}
         >
           {todos.map((todo) => (
             <li
               key={todo.id}
+              className="card"
               style={{
-                backgroundColor: "#ccc",
+                backgroundColor: "#f9f9f9",
+                border: "1px solid #f3f3f3",
+                width: "600px",
+                height: "120px",
                 color: "white",
-                padding: "10px",
+                padding: "14px",
                 display: "flex",
                 justifyContent: "space-between",
+                borderRadius: "8px",
+                alignItems: "flex-start",
+                cursor: "pointer",
               }}
             >
               <div
                 style={{
                   justifyItems: "center",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                   display: "flex",
                 }}
-                className="flex items-center"
               >
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => dispatch(toggleTodo(todo.id))}
-                  className="mr-2"
+                <h4
                   style={{
-                    height: "20px",
-                    width: "20px",
-                    cursor: "pointer",
-                    borderRadius: " 4px",
+                    color: "#333",
+                    fontSize: "24px",
+                    textAlign: "center",
                   }}
-                />
-                <span
-                  className={`${
-                    todo.completed ? "line-through text-gray-500 pl-4" : ""
-                  }`}
                 >
                   {todo.text}
-                </span>
+                </h4>
               </div>
               <button
                 onClick={() => dispatch(removeTodo(todo.id))}
-                className="text-red-500"
+                style={{
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "8px",
+                  color: "#777",
+                  cursor: "pointer",
+                }}
               >
                 Delete
               </button>
             </li>
           ))}
         </ul>
-      </div>
-      {/*  end of todos */}
-      <div
-        style={{
-          display: "flex",
-          marginTop: 16,
-          width: "100%",
-          background: "#ccc",
-          gap: "10px",
-          justifyContent: "center",
-        }}
-      >
-        <input
+        {/*  actions */}
+        <div
           style={{
-            borderRadius: "8px",
-            height: "52px",
-            textIndent: "10px",
-            outlineColor: "#eee",
-            width: 300,
-          }}
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enjoy creating your todo"
-        />
-
-        <button
-          onClick={handleAddTodo}
-          style={{
-            backgroundColor: "#333",
-            color: "white",
-            borderRadius: "50%",
-            height: "45px",
-            width: "45px",
-            alignItems: "center",
-            justifyContent: "center",
             display: "flex",
+            justifyContent: "center",
             alignItems: "center",
+            height: "100px",
           }}
         >
-          <svg width="24" height="24" fill="#fff" viewBox="0 0 256 256">
-            <path d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z"></path>
-          </svg>
-        </button>
+          <div
+            style={{
+              display: "flex",
+              marginTop: 16,
+              width: "800px",
+              height: "52px",
+
+              marginBottom: 8,
+              gap: "10px",
+              justifyContent: "center",
+            }}
+          >
+            <input
+              onFocus={(e) => e.target.select()}
+              style={{
+                borderRadius: "12px",
+                height: "52px",
+                textIndent: "16px",
+                outlineColor: "#eee",
+
+                width: 600,
+                // boxShadow:
+                //   "inset 0 0.0625em 0 0 #f4f4f4, 0 0.0625em 0 0 #efefef, 0 0.125em 0 0 #ececec, 0 0.25em 0 0 #e0e0e0, 0 0.3125em 0 0 #dedede, 0 0.375em 0 0 #dcdcdc, 0 0.425em 0 0 #cacaca, 0 0.425em 0.5em 0 #cecece",
+                transition: "0.15s ease",
+              }}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Enjoy creating your todo"
+            />
+
+            <button onClick={handleAddTodo} className="btn">
+              <svg width="22" height="22" fill="#333" viewBox="0 0 256 256">
+                <path d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
