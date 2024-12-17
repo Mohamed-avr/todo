@@ -36,7 +36,7 @@ export default function TodoList() {
         style={{
           width: 1800,
           backgroundColor: "#f4f4f4",
-          border: "1px solid #f1f1f1",
+          border: "1px solid #f1f1f2",
           height: 880,
           borderRadius: 12,
           marginBottom: 12,
